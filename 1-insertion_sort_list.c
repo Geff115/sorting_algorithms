@@ -41,19 +41,19 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *node1, *node2;
 
-	if (list == NULL || *list == NULL)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	node1 = *list;
 	node2 = (*list)->next;
 	while (node2 != NULL)
 	{
-		while (node1->prev != NULL && node1->n < node1->prev->n)
+		node1 = node2->prev;
+		while (node1 != NULL && node2->n < node1->n)
 		{
-			swap_nodes(list, node1, node1->prev);
+			swap_nodes(list, node2, node1);
 			print_list(*list);
-			node1 = node1->prev;
+			node2 = node1;
+			node1 = node2->prev;
 		}
-		node1 = node2;
 		node2 = node2->next;
 	}
 }
