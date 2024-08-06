@@ -32,7 +32,7 @@ void insertion_sort_list(listint_t **list)
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	
+
 	for (node1 = (*list)->next; node1 != NULL; node1 = tmp)
 	{
 		tmp = node1->next;
